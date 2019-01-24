@@ -1,0 +1,29 @@
+/* 
+.footer{
+        position: static;
+        text-align: center;
+        display: block;
+        overflow: auto;
+        border: 3px solid #73AD21;
+} */
+
+.footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 3px;
+    height: 30px;
+    background-color:white;
+    text-align: center;
+}
+
+
+.body-item {
+    text-align: center;
+}
+
+
+.body {
+    height: 100%;
+}

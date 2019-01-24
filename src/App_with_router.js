@@ -1,14 +1,25 @@
 import React from 'react';
-import  Titles  from "./components/Titles";
-import Form from "./components/Form";
-import Pets from "./components/Pets";
 import axios from 'axios';
-class App extends React.Component {
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import Navigation from './components_with_router/Navigation';
+import Home from './components_with_router/Home';
+import Profile from './components_with_router/Profile';
+import GetPets from "./components_with_router/GetPets";
+import AddPet from './components_with_router/AddPet';
+import DeletePet from './components_with_router/DeletePet';
+import Login from './components_with_router/Login';
+import Register from './components_with_router/Register';
+import Contact from './components_with_router/Contact';
+import Logout from './components_with_router/Logout';
+import Error from './components_with_router/Error';
+
+import './App_with_router.css';
+
+class App_with_router extends React.Component {
 
     state = {
         pets:  []
     }
-
     getPets = async (e) =>{
         e.preventDefault();
         const owner_name = e.target.elements.owner_name.value;
@@ -63,8 +74,8 @@ class App extends React.Component {
       const status = await api_call.status;
       console.log(status);
       if(status === 200) {
-          const data = await api_call.data;
-          console.log(data);
+        console.log('pet added to database');
+
       }
     }
     deletePet = async (e) =>{
@@ -82,24 +93,40 @@ class App extends React.Component {
       const status = await api_call.status;
       console.log(status);
       if(status === 200) {
-          const data = await api_call.data;
-          console.log(data);
+          console.log('pet deleted from database');
       }
     }
     render() {
         return(
             <div>
-                {/* <h1>Header of App.js</h1> */}
+            <BrowserRouter>
+            <div>
+                <Navigation />
+                <Switch>
+                    <Route path = "/" component = {Home} exact  />
+                    <Route path = "/GetPets" component = {GetPets} exact  />
+                    <Route path = "/AddPet" component = {AddPet} exact  />
+                    <Route path = "/DeletePet" component = {DeletePet} exact  />
+                    <Route path = "/Login" component = {Login} exact  />
+                    <Route path = "/Logout" component = {Logout} exact  />
+                    <Route path = "/Register" component = {Register} exact  />
+                    <Route path = "/Profile" component = {Profile} exact />
+                    <Route path = "/Contact" component = {Contact} exact />
+                    <Route component = {Error} />
+                    </Switch>
+            </div>
+            </BrowserRouter>
+            {/* <div>
                 <Titles />
                 <Form getPets = {this.getPets} addPet = {this.addPet} deletePet = {this.deletePet}/><br/>
-                {/* <Abc getPets = {this.getPets} getPetsAxios = {this.getPetsAxios} /> */}
                 <Pets pets = {this.state.pets} />
+            </div> */}
             </div>
         )
     }
 }
 
-export default App;
+export default App_with_router;
 
 // import React, { Component } from 'react';
 // import logo from './logo.svg';
