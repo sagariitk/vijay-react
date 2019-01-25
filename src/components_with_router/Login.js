@@ -24,6 +24,11 @@ class Login extends React.Component {
                         alert('password is not correct');
                         window.location = '/login';
                     }
+                    else if(data.msg === "username is not registered"){
+                        console.log('username is not registered');
+                        alert('username is not registered');
+                        window.location = '/login';
+                    }
                     else {
                         console.log(data);
                         localStorage.setItem('jwtToken', data.token);

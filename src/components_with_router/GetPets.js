@@ -39,7 +39,14 @@ class GetPets extends React.Component {
                     <input type="text" name="owner_name" placeholder="owner_name"></input>
                     <button>Get Pets</button>
                     </form>
-                    <h2> Total Pets: {this.state.pets.length}</h2>
+
+                    {this.state.pets && this.state.pets.map((pet) => {
+                        return (
+                                <div className="body-item">  
+                                    <h2> Total Pets: {this.state.pets.length}</h2>
+                                </div>
+                            );
+                    })} 
                     {this.state.pets && this.state.pets.map((pet) => {
                         return (
                                 <div className="body-item">  
