@@ -7,26 +7,33 @@ class GetPets extends React.Component {
     getPets = async (e) =>{
         e.preventDefault();
         const owner_name = e.target.elements.owner_name.value;
-        const api_call = await fetch(`http://localhost:1337/pets/${owner_name}`, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.jwtToken
-            }
-        });
-        const status = await api_call.status;
-        if(status === 200) {
-            const data = await api_call.json();
-            this.setState({
-                pets: data
+        try{
+            const api_call = await fetch(`http://localhost:1337/pets/${owner_name}`, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.jwtToken
+                }
             });
-            console.log(data);
+            const status = await api_call.status;
+            if(status === 200) {
+                const data = await api_call.json();
+                this.setState({
+                    pets: data
+                });
+                console.log(data);
+            }
+            else {
+                console.log(status);
+                console.log('error');
+            }
         }
-        else {
-            console.log(status);
+        catch(err) {
             console.log('error');
+            alert('data server is not responding');
         }
+
     }
     render() {
         return (
