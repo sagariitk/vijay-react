@@ -9,7 +9,7 @@ class Login extends React.Component {
             password : e.target.elements.password.value
         }
         try{
-            const api_call = await fetch(`http://localhost:1337/login`, {
+            const api_call = await fetch(`http://127.0.0.1:1337/login`, {
                 method: 'POST',
                 body: JSON.stringify(body),
                 headers: {

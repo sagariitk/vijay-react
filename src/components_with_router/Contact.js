@@ -11,7 +11,7 @@ class Contact extends React.Component {
         }
         console.log(body);
         try{
-            const api_call = await fetch(`http://localhost:1337/contact`, {
+            const api_call = await fetch(`http://127.0.0.1:1337/contact`, {
                 method: 'POST',
                 body: JSON.stringify(body),
                 headers: {

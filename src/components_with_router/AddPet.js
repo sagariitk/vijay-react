@@ -15,7 +15,7 @@ class AddPet extends React.Component {
             alert('pet breed or owner name can not be blank');
         }
         else {
-            const api_call = await fetch(`http://localhost:1337/pets`, {
+            const api_call = await fetch(`http://127.0.0.1:1337/pets`, {
             method: 'POST',
             body: JSON.stringify(body),
             headers: {

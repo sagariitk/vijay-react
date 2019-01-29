@@ -8,12 +8,12 @@ class GetPets extends React.Component {
         e.preventDefault();
         const owner_name = e.target.elements.owner_name.value;
         try{
-            const api_call = await fetch(`http://localhost:1337/pets/${owner_name}`, {
+            const api_call = await fetch(`http://127.0.0.1:1337/pets/${owner_name}`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + localStorage.jwtToken
+                    // 'Authorization': 'Bearer ' + localStorage.jwtToken
                 }
             });
             const status = await api_call.status;
@@ -46,14 +46,9 @@ class GetPets extends React.Component {
                     <input type="text" name="owner_name" placeholder="owner_name"></input>
                     <button>Get Pets</button>
                     </form>
-
-                    {this.state.pets && this.state.pets.map((pet) => {
-                        return (
-                                <div className="body-item">  
-                                    <h2> Total Pets: {this.state.pets.length}</h2>
-                                </div>
-                            );
-                    })} 
+                    <div className="body-item">  
+                        <h2> Total Pets: {this.state.pets.length}</h2>
+                    </div>
                     {this.state.pets && this.state.pets.map((pet) => {
                         return (
                                 <div className="body-item">  
