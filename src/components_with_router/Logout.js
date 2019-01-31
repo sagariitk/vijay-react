@@ -1,6 +1,8 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-class Logout extends React.Component {
+
+export default class Logout extends React.Component {
     
     logout = async (e) =>{
         e.preventDefault();
@@ -23,4 +25,3 @@ class Logout extends React.Component {
     }
 }
 
-export default Logout;

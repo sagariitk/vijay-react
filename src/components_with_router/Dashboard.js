@@ -1,8 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink , Link} from 'react-router-dom';
 
-export default class Navigation extends React.Component {
 
+export default class Dashboard extends React.Component {
     logout = async (e) =>{
         e.preventDefault();
         localStorage.removeItem("jwtToken");
@@ -40,22 +40,27 @@ export default class Navigation extends React.Component {
             console.log('error');
         }
     }
-    
     render() {
         return (
-            <div className="main" style= {{margin : 10}}> 
-                <div className="header"></div>   
-                <div className="body">
-                    <NavLink to="/"><strong style={{ fontSize: 20, padding:5 }}>Home</strong></NavLink>
-                    <NavLink to="/Profile" onClick= {this.profile}><strong style={{ fontSize: 20, padding:5 }}>Profile</strong></NavLink>
-                    <NavLink to="/GetPets"><strong style={{ fontSize: 20, padding:5 }}>GetPets</strong></NavLink>
-                    <NavLink to="/AddPet"><strong style={{ fontSize: 20, padding:5 }}>AddPet</strong></NavLink>
-                    <NavLink to="/Login"><strong style={{ fontSize: 20, padding:5 }}>Login</strong></NavLink>
-                    <NavLink to="/Register"><strong style={{ fontSize: 20, padding:5 }}>Register</strong></NavLink>
-                    <NavLink to="/Contact"><strong style={{ fontSize: 20, padding:5 }}>Contact Us</strong></NavLink>
-                    <NavLink to="#" onClick= {this.logout} ><strong style={{ fontSize: 20, padding:5 }}>Logout</strong></NavLink>
+
+                <div className="main" style= {{margin : 10}}> 
+                    <div className="header">
+                        <div className="navbar">
+                            <NavLink to="/"><strong style={{ fontSize: 20, padding:5 }}>Home</strong></NavLink>
+                            <NavLink to="/Dashboard"><strong style={{ fontSize: 20, padding:5 }}>Dashboard</strong></NavLink>
+                            <NavLink to="/Profile" onClick= {this.profile}><strong style={{ fontSize: 20, padding:5 }}>Profile</strong></NavLink>
+                            <NavLink to="/GetPets"><strong style={{ fontSize: 20, padding:5 }}>GetPets</strong></NavLink>
+                            <NavLink to="/AddPet"><strong style={{ fontSize: 20, padding:5 }}>AddPet</strong></NavLink>
+                            <NavLink to="/" onClick= {this.logout} ><strong style={{ fontSize: 20, padding:5 }}>Logout</strong></NavLink>
+                        </div>
+                        
+                    </div>   
+                    <div className="body">
+                        <h1>Home Component</h1>
+                    </div>
+                    <div className="footer"><span>&copy; Copyright 2019 Vijay Yadav</span></div>
                 </div>
-            </div>
+
         );
     }
 }

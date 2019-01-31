@@ -1,6 +1,9 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-class Login extends React.Component {
+
+
+export default class Login extends React.Component {
     
     login = async (e) =>{
         e.preventDefault();
@@ -52,13 +55,18 @@ class Login extends React.Component {
         return (
             <div className="main" style= {{margin : 10}}> 
                 <div className="header">
-                    <h1>Login Componnet</h1>
+                    <div className="navbar">
+                        <NavLink to="/"><strong style={{ fontSize: 20, padding:5 }}>Home</strong></NavLink>
+                        <NavLink to="/Dashboard"><strong style={{ fontSize: 20, padding:5 }}>Dashboard</strong></NavLink>
+                        <NavLink to="/Register"><strong style={{ fontSize: 20, padding:5 }}>Register</strong></NavLink>
+                    </div>
                 </div>   
                 <div className="body">
+                    <h1>Login Componnet</h1>
                     <form onSubmit={this.login}>
-                    <input type="text" name="username" placeholder="username"></input>
-                    <input type="text" name="password" placeholder="password"></input>
-                    <button>Login</button>
+                        <input type="text" name="username" placeholder="username"></input><br></br>
+                        <input type="text" name="password" placeholder="password"></input><br></br>
+                        <button>Login</button>
                     </form> 
                 </div>
                 <div className="footer"><span>&copy; Copyright 2019 Vijay Yadav</span></div>      
@@ -66,5 +74,3 @@ class Login extends React.Component {
         )
     }
 }
-
-export default Login;

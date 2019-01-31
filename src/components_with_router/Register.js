@@ -1,6 +1,8 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-class Register extends React.Component {
+
+export default class Register extends React.Component {
 
     register = async (e) =>{
         e.preventDefault();
@@ -25,7 +27,6 @@ class Register extends React.Component {
                         'Content-Type': 'application/json',
                         'Authorization': 'Bearer ' + localStorage.jwtToken
                     },
-                    //make sure to serialize your JSON body
                     body: JSON.stringify({
                         firstname : e.target.elements.firstname.value,
                         lastname : e.target.elements.lastname.value,
@@ -63,17 +64,22 @@ class Register extends React.Component {
     render() {
         return (
             <div className="main" style= {{margin : 10}}> 
-                <div className="header"> 
-                    <h1>Register Componnet</h1>
+                <div className="header">
+                    <div className="navbar">
+                        <NavLink to="/"><strong style={{ fontSize: 20, padding:5 }}>Home</strong></NavLink>
+                        <NavLink to="/Dashboard"><strong style={{ fontSize: 20, padding:5 }}>Dashboard</strong></NavLink>
+                        <NavLink to="/Login"><strong style={{ fontSize: 20, padding:5 }}>Login</strong></NavLink>
+                    </div> 
                 </div>   
                 <div className="body">
+                    <h1>Register Componnet</h1>
                     <form onSubmit={this.register}>
-                    <input type="text" name="firstname" placeholder="firstname"></input>
-                    <input type="text" name="lastname" placeholder="lastname"></input>
-                    <input type="text" name="username" placeholder="username"></input>
-                    <input type="text" name="password" placeholder="password"></input>
-                    <input type="text" name="mobileno" placeholder="mobileno"></input>
-                    <button>Register</button>
+                        <input type="text" name="firstname" placeholder="Firstname"></input><br></br>
+                        <input type="text" name="lastname" placeholder="Lastname"></input><br></br>
+                        <input type="text" name="username" placeholder="Username"></input><br></br>
+                        <input type="text" name="password" placeholder="Password"></input><br></br>
+                        <input type="text" name="mobileno" placeholder="Mobileno"></input><br></br>
+                        <button>Register</button>
                     </form>  
                 </div>
                 <div className="footer"><span>&copy; Copyright 2019 Vijay Yadav</span></div>      
@@ -82,4 +88,3 @@ class Register extends React.Component {
     }
 }
 
-export default Register;

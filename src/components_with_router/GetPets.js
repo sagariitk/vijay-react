@@ -1,6 +1,8 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-class GetPets extends React.Component {
+
+export default class GetPets extends React.Component {
     state = {
         pets:  []
     }
@@ -12,8 +14,7 @@ class GetPets extends React.Component {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    // 'Authorization': 'Bearer ' + localStorage.jwtToken
+                    'Content-Type': 'application/json'
                 }
             });
             const status = await api_call.status;
@@ -39,12 +40,20 @@ class GetPets extends React.Component {
         return (
             <div className="main" style= {{margin : 10}}> 
                 <div className="header">
-                    <h1>Pets Componnet</h1>
+                    <div className="navbar">
+                        <NavLink to="/"><strong style={{ fontSize: 20, padding:5 }}>Home</strong></NavLink>
+                        <NavLink to="/Dashboard"><strong style={{ fontSize: 20, padding:5 }}>Dashboard</strong></NavLink>
+                        <NavLink to="/Profile" onClick= {this.profile}><strong style={{ fontSize: 20, padding:5 }}>Profile</strong></NavLink>
+                        <NavLink to="/GetPets"><strong style={{ fontSize: 20, padding:5 }}>GetPets</strong></NavLink>
+                        <NavLink to="/AddPet"><strong style={{ fontSize: 20, padding:5 }}>AddPet</strong></NavLink>
+                        <NavLink to="/" onClick= {this.logout} ><strong style={{ fontSize: 20, padding:5 }}>Logout</strong></NavLink>
+                    </div>
                 </div>   
                 <div className="body">
+                    <h1>Pets Componnet</h1>
                     <form onSubmit={this.getPets}>
-                    <input type="text" name="owner_name" placeholder="owner_name"></input>
-                    <button>Get Pets</button>
+                        <input type="text" name="owner_name" placeholder="Owner Name"></input><br></br>
+                        <button>Get Pets</button>
                     </form>
                     <div className="body-item">  
                         <h2> Total Pets: {this.state.pets.length}</h2>
@@ -68,4 +77,3 @@ class GetPets extends React.Component {
     }
 }
 
-export default GetPets;

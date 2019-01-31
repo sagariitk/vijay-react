@@ -1,6 +1,8 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-class Contact extends React.Component {
+
+export default class Contact extends React.Component {
     
     contact = async (e) =>{
         e.preventDefault();
@@ -41,14 +43,20 @@ class Contact extends React.Component {
         return (
             <div className="main" style= {{margin : 10}}> 
                 <div className="header">
-                    <h1>Contact Componnet</h1>
+                    <div className="navbar">
+                        <NavLink to="/"><strong style={{ fontSize: 20, padding:5 }}>Home</strong></NavLink>
+                        <NavLink to="/Dashboard"><strong style={{ fontSize: 20, padding:5 }}>Dashboard</strong></NavLink>
+                        <NavLink to="/Login"><strong style={{ fontSize: 20, padding:5 }}>Login</strong></NavLink>
+                        <NavLink to="/Register"><strong style={{ fontSize: 20, padding:5 }}>Register</strong></NavLink>
+                    </div>
                 </div>   
                 <div className="body">
+                    <h1>Contact Componnet</h1>
                     <form onSubmit={this.contact}>
-                    <input type="text" name ="name" placeholder="Name" ></input>
-                    <input type="email" name ="email" placeholder="email" ></input>
-                    <input type="text" name="query" placeholder="" ></input>
-                    <button>Contact</button>
+                        <input type="text" name ="name" placeholder="Name" ></input>
+                        <input type="email" name ="email" placeholder="email" ></input>
+                        <input type="text" name="query" placeholder="" ></input>
+                        <button>Contact</button>
                     </form>
                 </div>
                 <div className="footer"><span>&copy; Copyright 2019 Vijay Yadav</span></div>      
@@ -57,4 +65,3 @@ class Contact extends React.Component {
     }
 }
 
-export default Contact;

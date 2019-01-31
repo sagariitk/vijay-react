@@ -1,7 +1,8 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 
-class AddPet extends React.Component {
+export default class AddPet extends React.Component {
     addPet = async (e) =>{
         e.preventDefault();
         const body = {
@@ -46,15 +47,24 @@ class AddPet extends React.Component {
         return (
             <div className="main" style= {{margin : 10}}> 
                 <div className="header">
-                    <h1>Add a New Pet</h1>
+                    <div className="navbar">
+                        <NavLink to="/"><strong style={{ fontSize: 20, padding:5 }}>Home</strong></NavLink>
+                        <NavLink to="/Dashboard"><strong style={{ fontSize: 20, padding:5 }}>Dashboard</strong></NavLink>
+                        <NavLink to="/Profile" onClick= {this.profile}><strong style={{ fontSize: 20, padding:5 }}>Profile</strong></NavLink>
+                        <NavLink to="/GetPets"><strong style={{ fontSize: 20, padding:5 }}>GetPets</strong></NavLink>
+                        <NavLink to="/AddPet"><strong style={{ fontSize: 20, padding:5 }}>AddPet</strong></NavLink>
+                        <NavLink to="/" onClick= {this.logout} ><strong style={{ fontSize: 20, padding:5 }}>Logout</strong></NavLink>
+                    </div>
+                    
                 </div>   
                 <div className="body">
+                    <h1>Add a New Pet</h1>
                     <form  onSubmit={this.addPet}>
-                    <input type="text" name="pet_breed" placeholder="pet_breed"></input>
-                    <input type="text" name="owner_name" placeholder="owner_name"></input>
-                    <input type="text" name="owner_contact_no" placeholder="owner_contact_no"></input>
-                    <input type="text" name="pet_description" placeholder="pet_description"></input>
-                    <button>Add Pet</button>
+                        <input type="text" name="pet_breed" placeholder="Pet Breed"></input><br></br>
+                        <input type="text" name="owner_name" placeholder="Owner Name"></input><br></br>
+                        <input type="text" name="owner_contact_no" placeholder="Owner Contact No"></input><br></br>
+                        <input type="text" name="pet_description" placeholder="Pet Description"></input><br></br>
+                        <button>Add Pet</button>
                     </form>    
                 </div>
                 <div className="footer"><span>&copy; Copyright 2019 Vijay Yadav</span></div>      
@@ -63,4 +73,3 @@ class AddPet extends React.Component {
     }
 }
 
-export default AddPet;
